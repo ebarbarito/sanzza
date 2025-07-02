@@ -29,7 +29,7 @@ export default function Dashboard() {
   };
 
   return (
-    <>
+    <div className="bg-gray-200 min-h-screen p-6">
       <Card>
         <CardContent>
           <h1 className="text-xl font-bold mb-4">Servicios en curso</h1>
@@ -125,6 +125,6 @@ export default function Dashboard() {
           </div>
         </CardContent>
       </Card>
-    </>
+    </div>
   );
 }

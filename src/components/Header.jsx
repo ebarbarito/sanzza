@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import { Bell, Plus, Settings, ChevronUp, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Bell, Plus, Settings, ChevronUp, ChevronDown } from "lucide-react";
 
 export default function Header() {
   const [menuVisible, setMenuVisible] = useState(true);
 
   return (
-    <header className="flex items-center justify-between px-6 py-3 shadow-md bg-gray-100">
-      {menuVisible && (
-        <nav className="flex gap-6 text-sm font-semibold text-gray-700">
-          <Link to="/" className="hover:text-blue-600">Principal</Link>
-          <Link to="/tableros" className="hover:text-blue-600">Tableros</Link>
-          <Link to="/servicios" className="hover:text-blue-600">Servicios</Link>
-          <Link to="/cuadrilla" className="hover:text-blue-600">Cuadrilla</Link>
-          <Link to="/reportes" className="hover:text-blue-600">Reportes</Link>
-          <Link to="/mapa" className="hover:text-blue-600">Mapa</Link>
-        </nav>
-      )}
+    <header className="flex items-center justify-between px-6 py-3 bg-gray-200 border-b border-gray-400">
+      {/* Menú lateral izquierdo */}
+      <div className="flex items-center gap-6">
+        <Link to="/" className="text-black font-bold hover:text-blue-600">Inicio</Link>
+        <Link to="/map" className="text-black font-bold hover:text-blue-600">Tableros</Link>
+        <Link to="/map2" className="text-black font-bold hover:text-blue-600">Servicios</Link>
+        <Link to="/map3" className="text-black font-bold hover:text-blue-600">Escuadrilla</Link>
+        <Link to="/map4" className="text-black font-bold hover:text-blue-600">Reportes</Link>
+      </div>
 
+      {/* Acciones lado derecho */}
       <div className="flex items-center gap-4">
         {menuVisible && (
           <>
@@ -34,7 +33,7 @@ export default function Header() {
             </div>
           </>
         )}
-        <img src="/logo.png" alt="Logo" className="h-20" />
+        <img src="/logo.png" alt="Logo" className="h-16" />
         <button
           onClick={() => setMenuVisible(!menuVisible)}
           className="text-gray-700 hover:text-blue-600"

@@ -1,27 +1,36 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
-import VideoWall from "./pages/VideoWall";
 import Map from "./pages/Map";
-import PendingServices from "./pages/PendingServices";
-import Alerts from "./pages/Alerts";
+import Map2 from "./pages/Map2";
+import Map3 from "./pages/Map3";
+import Map4 from "./pages/Map4";
 
-export default function App() {
+function AppContent() {
+  const location = useLocation();
+  const hideHeaderRoutes = ["/map", "/map2", "/map3", "/map4"]; // ocultamos el Header
+
+  return (
+    <>
+      {!hideHeaderRoutes.includes(location.pathname) && <Header />}
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/map2" element={<Map2 />} />
+        <Route path="/map3" element={<Map3 />} />
+        <Route path="/map4" element={<Map4 />} />
+      </Routes>
+    </>
+  );
+}
+
+function App() {
   return (
     <Router>
-      <div className="flex flex-col h-screen">
-        <Header />
-        <main className="flex-1 overflow-auto p-4 bg-gray-100">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/tableros" element={<VideoWall />} />
-            <Route path="/mapa" element={<Map />} />
-            <Route path="/pendientes" element={<PendingServices />} />
-            <Route path="/alertas" element={<Alerts />} />
-          </Routes>
-        </main>
-      </div>
+      <AppContent />
     </Router>
   );
 }
+
+export default App;
